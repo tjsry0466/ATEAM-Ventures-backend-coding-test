@@ -10,10 +10,10 @@
     },
     "license": {
       "name": "MIT",
-      "url": "http://localhost:3000"
+      "url": "http://post-codes.kyojs.com"
     }
   },
-  "host": "localhost:3000",
+  "host": "post-codes.kyojs.com",
   "basePath": "/v1",
   "tags": [
     {
@@ -58,7 +58,7 @@
       "get": {
         "tags": ["stores"],
         "summary": "가게 이름으로 가게 조회",
-        "description": "파라미터로 전송한 가게 이름을 포함하는 가게 정보를 반환합니다.",
+        "description": "파라미터로 전송한 가게 이름을 포함하는 가게 정보를 조회합니다.",
         "operationId": "getStoresByStoreName",
         "parameters": [
           {
