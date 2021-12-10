@@ -1,3 +1,5 @@
-module.exports.postCodesConfig = {
-  URL: 'https://api.postcodes.io/postcodes/',
+const URL = 'https://api.postcodes.io/postcodes/';
+
+module.exports = {
+  URL,
 };

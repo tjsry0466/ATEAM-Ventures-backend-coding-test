@@ -6,7 +6,7 @@ router.route('/stores').get(postCodesController.getStores);
 router.route('/stores/:storeName').get(postCodesController.getStore);
 
 router
-  .route('/:postCode/radius-search')
+  .route('/post-codes/:postCode/radius-search')
   .get(postCodesController.getRadiusStoresByPostCode);
 
 module.exports = router;

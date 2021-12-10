@@ -5,7 +5,7 @@ const router = express.Router();
 
 const defaultRoutes = [
   {
-    path: '/postCodes',
+    path: '/',
     route: postCodes,
   },
 ];
