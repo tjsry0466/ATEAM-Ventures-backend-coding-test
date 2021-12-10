@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const validate = require('../../middlewares/validate');
 const { postCodesController } = require('../../controllers/');
 const { postCodesValidation } = require('../../validations/');
+const router = express.Router();
 
 router
   .route('/stores')
@@ -13,7 +13,7 @@ router
   .get(validate(postCodesValidation.getStore), postCodesController.getStore);
 
 router
-  .route('/post-codes/:postCode/radius-search')
+  .route('/stores/post-codes/:postCode/radius-search')
   .get(
     validate(postCodesValidation.getRadiusStoresByPostCode),
     postCodesController.getRadiusStoresByPostCode

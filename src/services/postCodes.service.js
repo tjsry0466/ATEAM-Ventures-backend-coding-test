@@ -8,6 +8,7 @@ const { axiosHttpRequest } = require('../utils/axiosHttpRequest');
 const getStores = () => {
   return stores;
 };
+
 const getStoreByName = (name) => {
   // stores 데이터중 인자로 받은 name를 포함하는 데이터만 반환
   return stores.filter((item) => item.name.includes(name));
@@ -33,6 +34,7 @@ const getLatitudeAndLongitudeByPostCode = async (postCode) => {
   const { latitude, longitude } = response.result;
   return { latitude, longitude };
 };
+
 const getRadiusStoresByPostCode = async (
   postCode,
   limit = 10,
@@ -60,17 +62,13 @@ const getRadiusStoresByPostCode = async (
     return {
       postcode: el.postcode,
       latitude: el.latitude,
+      longitude: el.longitude,
     };
   });
 
   // 북->남 내림차순으로 정렬
   response.sort((prev, next) => next.latitude - prev.latitude);
-  // postcode 배열 추출하여 생성
-  response = response.map((item) => item.postcode);
-  // stores에서 API 결과의 post code와 같은 것만 가져옴
-  const result = stores.filter((store) => response.includes(store.postcode));
-
-  return result;
+  return response;
 };
 
 module.exports = {

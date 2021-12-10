@@ -1,0 +1,163 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "postCodes API",
+    "description": "ATEAM-Ventures-backend-coding-test API docs with Swagger",
+    "contact": {
+      "name": "Jeong Seonkyo",
+      "email": "seonkyo0466@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://localhost:3000"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "PostCodes",
+      "description": "API for PostCodes"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/stores": {
+      "get": {
+        "tags": [
+          "stores"
+        ],
+        "summary": "가게 목록 조회",
+        "operationId": "getStores",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#definitions/stores"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/{storeName}": {
+      "get": {
+        "tags": ["stores"],
+        "summary": "가게 이름으로 가게 조회",
+        "description": "파라미터로 전송한 가게 이름을 포함하는 가게 정보를 반환합니다.",
+        "operationId": "getStoresByStoreName",
+        "parameters": [
+          {
+            "name": "storeName",
+            "in": "path",
+            "description": "검색에 사용될 가게 이름입니다.",
+            "type": "string",
+            "default": "St_Albans"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#definitions/stores"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stores/post-codes/{post-codes}/radius-search": {
+      "get": {
+        "tags": ["stores"],
+        "summary": "우편번호 반경 가게 조회",
+        "description": "파라미터로 전송한 우편 번호 근처의 가게를 조회합니다.",
+        "operationId": "getRadiusStoresByPostCode",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "post-codes",
+            "in": "path",
+            "description": "반경 검색에 사용될 우편 번호 입니다.",
+            "type": "string",
+            "default": "CT1 1DX"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "반환될 가게의 최대 개수입니다.",
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 100
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "우편 번호로부터 검색할 반영 크기 입니다.",
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 2000
+          },
+          {
+            "name": "widesearch",
+            "in": "query",
+            "description": "한번에 넓은 지역을 가져오는 경우 상당한 비용이 소모됩니다. 20km미터내에 최대 20개의 가게를 조회할수 있도록 하는 옵션입니다.",
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#definitions/stores"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "store": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "integer"
+        }
+      }
+    },
+    "stores": {
+      "properties": {
+        "store": {
+          "type": "array",
+          "$ref": "#/definitions/store"
+        }
+      }
+    }
+  }
+}
