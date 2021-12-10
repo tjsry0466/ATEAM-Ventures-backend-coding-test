@@ -10,7 +10,7 @@
     },
     "license": {
       "name": "MIT",
-      "url": "http://post-codes.kyojs.com"
+      "url": "https://post-codes.kyojs.com"
     }
   },
   "host": "post-codes.kyojs.com",
@@ -22,7 +22,7 @@
     }
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "consumes": [
     "application/json"
