@@ -135,6 +135,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          },
+          "500": {
+            "description": "INTERVAL SERVER ERROR"
+          },
+          "503": {
+            "description": "SERVICE_UNAVAILABLE"
           }
         }
       }
