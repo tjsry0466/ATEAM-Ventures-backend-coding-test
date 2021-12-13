@@ -25,6 +25,7 @@ Swagger API Docs를 통해 구현된 API의 목록을 확인하고 테스트 할
 ```shell
 git clone https://github.com/tjsry0466/ATEAM-Ventures-backend-coding-test.git
 cd ATEAM-Ventures-backend-coding-test
+cp .env.example .env
 npm install
 npm start
 ```
