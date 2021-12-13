@@ -1,4 +1,4 @@
-![nodejs](https://img.shields.io/badge/nodejs-14-green)
+![nodejs](https://img.shields.io/badge/nodejs-14.18.2-green)
 
 # ATEAM-Venturews-backend-coding-test
 
@@ -15,7 +15,7 @@ ATEAM-Ventures의 백엔드 코딩 테스트 입니다.
 - can get the functionality that allows you to return a list of stores in a given radius of a given postcode in the UK. The list must be ordered from north to south.
 
 # Demo
-Swagger API Docs를 통해 구현된 API를 테스트 할 수 있습니다.
+Swagger API Docs를 통해 구현된 API의 목록을 확인하고 테스트 할 수 있습니다.
 
 - [post-codes swagger API Docs (https://post-codes.kyojs.com/v1/api-docs)](https://post-codes.kyojs.com/v1/api-docs)
 
