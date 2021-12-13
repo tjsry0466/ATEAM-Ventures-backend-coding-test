@@ -4,7 +4,7 @@
 
 ## Description
 
-> ATEAM-Ventures의 백엔드 코딩 테스트 입니다.
+ATEAM-Ventures의 백엔드 코딩 테스트 입니다.
 다음과 같은 기능을 구현하였습니다.
 
 - can get the list of stores in `stores.json`
