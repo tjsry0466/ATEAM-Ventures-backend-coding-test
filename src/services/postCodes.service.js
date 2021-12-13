@@ -5,20 +5,39 @@ const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const { axiosHttpRequest } = require('../utils/axiosHttpRequest');
 
+/**
+ * @description stores.json 파일에 저장된 가게 목록을 반환합니다.
+ * @returns {{name: String, postcode: String}[]} stores
+ */
 const getStores = () => {
   return stores;
 };
 
+/**
+ * @description stores.json 파일에 저장된 가게 목록중 name을 포함하는 결과를 반환합니다.
+ * @param { String } name
+ * @returns {{name: String, postcode: String}[]} stores
+ */
 const getStoreByName = (name) => {
   // stores 데이터중 인자로 받은 name를 포함하는 데이터만 반환
   return stores.filter((item) => item.name.includes(name));
 };
 
+/**
+ * @description 입력받은 postCode가 stores.json에 저장되어 있는 정보인지 확인합니다.
+ * @param { String } postCode
+ * @returns {Boolean}
+ */
 const isValidPostCode = (postCode) => {
   // stores 데이터중 인자로 받은 postCode와 일치하는 데이터가 1개 이상 존재하는지 확인
   return !!stores.filter((item) => item.postcode === postCode).length;
 };
 
+/**
+ * @description postcode API 를 통해 postCode의 위/경도를 조회합니다.
+ * @param { String } postCode
+ * @returns {{ latitude: String, longitude: String }}
+ */
 const getLatitudeAndLongitudeByPostCode = async (postCode) => {
   // 존재하지 않는 포스트코드 에러 반환
   if (!isValidPostCode(postCode)) {
@@ -35,6 +54,14 @@ const getLatitudeAndLongitudeByPostCode = async (postCode) => {
   return { latitude, longitude };
 };
 
+/**
+ * @description postcode API 를 통해 postCode의 위/경도 반경에 있는 가게들을 위도의 내림차순으로 반환합니다.
+ * @param { postCode } postCode
+ * @param { Number } limit - 반환될 가게의 최대 갯수 입니다. 기본값 10. 최대값 100
+ * @param { Number } radius - 검색할 반경 크기 입니다. 기본값 10. 최댓값 2000
+ * @param { Boolean } widesearch - true로 설정하면 20km 근방의 최대 20개의 가게 목록을 조회합니다.
+ * @returns {{ latitude: String, longitude: String }}
+ */
 const getRadiusStoresByPostCode = async (
   postCode,
   limit = 10,
