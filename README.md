@@ -29,3 +29,22 @@ cp .env.example .env
 npm install
 npm start
 ```
+
+# Finally
+아래 질문에 대한 추가적인 답변입니다.
+
+> If you had chosen to spend more time on this test, what would you have done differently?
+
+- 한번 생성되면 잘 변경되지 않는 가게의 우편번호 특성을 생각해 보았을때, Redis와 같은 캐시 저장소를 사용하여 일반적인 경우에는 캐시 데이터로 반환하고 특정 주기로 배치 작업으로 데이터를 업데이트 하거나 변경된 부분만 적용하여 캐시 메모리의 잇점을 적용해보고 싶습니다.
+
+> What part did you find the hardest? What part are you most proud of? In both cases, why?
+
+- 마지막 항목의 요구사항을 정확히 파악하는데에 조금 어려움이 있었습니다.
+stores.json파일에 저장된 가게의 목록들에 대해서 반경조회를 하는것인지, 결과 데이터의 항목이 stores.json에 포함되지 않아도 되는건지 의문이 들었지만,
+stores.json의 더미 데이터의 항목들이 한 구역에 1~2개의 데이터만 존재하는 걸로 보아 후자가 맞다고 판단했습니다.
+- 에러가 발생할수 있는 케이스를 생각하고, 최대한 나타날 수 있는 케이스에 대해서 에러 처리를 할수 있도록 노력했습니다. 어떤 에러케이스가 있을지 고심했습니다. 
+- 공통된 API URL에 대해서 분리하여 import 해서 사용하고 axios 요청에 대한 로직, 에러 처리에 대한 로직이 공통적으로 사용된다고 생각되어 utils로 분리하였습니다. 코드 재사용과 유지보수를 위해 좋은 선택이라고 생각합니다.
+
+> What is one thing we could do to improve this test?
+
+- 요구사항을 명확히 하고, 단순히 API 요청을 통해 가져오는 것 뿐만 아니라 데이터의 특성을 파악해서 데이터 특성에 맞는 저장방식과 기능을 구현하도록 할 수 있다면 좋을 것 같습니다.  
