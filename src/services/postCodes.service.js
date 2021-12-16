@@ -1,7 +1,6 @@
-const axios = require('axios');
+const httpStatus = require('http-status');
 const { stores } = require('../models');
 const { postCodeAPIConfig } = require('../config/');
-const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const { axiosHttpRequest } = require('../utils/axiosHttpRequest');
 
